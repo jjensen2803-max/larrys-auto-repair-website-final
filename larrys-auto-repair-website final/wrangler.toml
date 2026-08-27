@@ -1,0 +1,19 @@
+# Cloudflare Worker configuration for Larry's Auto Repair & Glass
+#
+# Deploy in two commands:
+#   npm install
+#   npm run deploy
+#
+# (or run: npx wrangler deploy)
+#
+# This uses Cloudflare Workers Static Assets. The whole site is a single
+# self-contained dist/index.html, and the SPA fallback below makes routes
+# like /services and /contact work on refresh and direct links.
+
+name = "larrys-auto-repair"
+compatibility_date = "2024-11-01"
+
+[assets]
+directory = "./dist"
+# Serve index.html for any unmatched route so client-side routing works.
+not_found_handling = "single-page-application"
